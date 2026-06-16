@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Movie Weekend Planner - Users
+        link(rel="stylesheet", href="/styles/styles.css")
+
+    body
+        include header.pug
+
+        main
+            .centered
+                h2 Users Directory
+
+            ul
+                each u in users
+                    li
+                        //can click/access user link if not private
+                        if !u.private
+                            a(href=`/users/${u.id}`) #{u.username}
+                        else
+                            span.user-private #{u.username}
+
+                        img.remove-img(
+                            src="/images/remove.svg",
+                            onclick=`deleteUser('${u.id}', event)`
+                        )
+
+        script(src="/scripts/users.js")

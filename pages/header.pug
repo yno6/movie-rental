@@ -1,0 +1,21 @@
+header
+    h1 
+        img(src="/images/popcornLeft.png", width=50, alt="Popcorn Logo")
+        | &nbsp; "Movie Weekend" Planner &nbsp;
+        img(src="/images/popcornRight.png", width=50, alt="Popcorn Logo")
+
+    nav
+        a(href="/") Home
+        if !user
+            a(href="/login") Login
+        if user
+            a(href="/order") Order Form
+            a(href="/stats") Statistics
+
+            if user.isAdmin
+                a(href="/services") Services
+                a(href="/users") Users  
+            
+            a(href=`/users/${user.id}`) Profile      
+            a(href="/logout") Logout
+script(src="/scripts/header.js")

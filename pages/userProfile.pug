@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title User Profile
+        link(rel="stylesheet", href="/styles/styles.css")
+
+    body
+        include header.pug
+
+        main
+            .centered
+                h2 Profile
+
+                form(onsubmit="updateProfile(event)")
+                    input(type="hidden", id="userId", value=profile._id)
+                    
+                    .form-group
+                    label Username:
+                    input(type="text", id="username", value=profile.username)
+
+                    .form-group
+                    label Password:
+                    input(type="password", id="password")
+
+                    .form-group
+                    label Confirm Password:
+                    input(type="password", id="confirmPassword")
+
+                    .form-group
+                    label Private:
+                    input(type="checkbox", id="private", checked=profile.private)
+
+                    br
+                    button(type="submit") Save Changes
+                br
+                h3 Order History
+
+                each order in orders
+                    div.order
+                        p Order ID: #{order._id}
+                        p Total: #{order.total}
+
+                        ul
+                            each service in Object.values(order.movies)
+                                each movie in service
+                                    li #{movie.id} - #{movie.title} (#{movie.year})
+
+        script(src="/scripts/profile.js")
