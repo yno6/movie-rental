@@ -10,6 +10,8 @@
                                                - Managing streaming services (add/edit/delete)
                                                - Managing movies and genres within services
                                                - Viewing all users and deleting users
+                                               
+                    Admin Login Details:       Username: admin     Password: admin
 
 # File Structure:
                         ├── images/                 # Icons (select/remove buttons svg)
